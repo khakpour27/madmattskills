@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>madmattskills carousel</title>
+<!-- LinkedIn carousel, 5 slides at 1080x1350 (4:5).
+     PDF:  headless_shell --print-to-pdf=carousel.pdf --no-pdf-header-footer carousel.html
+     PNG:  headless_shell --screenshot=slide-1.png --window-size=1080,1350 "carousel.html#1" -->
+<style>
+  :root {
+    --bg: #0f1014;
+    --ink: #f4f1ec;
+    --muted: #9a978f;
+    --line: #2a2b31;
+    --panel: #16171c;
+    --coral: #e07a55;
+    --coral-dim: rgba(224, 122, 85, 0.14);
+    --coral-edge: rgba(224, 122, 85, 0.45);
+    --night: #7c8cf8;
+    --night-dim: rgba(124, 140, 248, 0.14);
+    --night-edge: rgba(124, 140, 248, 0.45);
+    --sans: "Liberation Sans", "Helvetica Neue", Arial, sans-serif;
+    --mono: "DejaVu Sans Mono", "Liberation Mono", Menlo, monospace;
+  }
+  @page { size: 1080px 1350px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--ink); font-family: var(--sans); }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .slide {
+    width: 1080px; height: 1350px; position: relative; overflow: hidden;
+    padding: 96px 88px 88px;
+    display: flex; flex-direction: column;
+    page-break-after: always; break-after: page;
+    background:
+      radial-gradient(640px 520px at 100% 0%, rgba(224,122,85,0.20), transparent 70%),
+      radial-gradient(560px 480px at 0% 100%, rgba(124,140,248,0.12), transparent 70%),
+      radial-gradient(circle, #23242a 1px, transparent 1.2px) 0 0 / 28px 28px,
+      var(--bg);
+  }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+  body.single .slide { display: none; }
+  body.single .slide.on { display: flex; }
+
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .brand { font-weight: 700; font-size: 26px; letter-spacing: -0.5px; }
+  .brand span { color: var(--coral); }
+  .count { font-family: var(--mono); font-size: 22px; color: var(--muted); }
+
+  .kicker {
+    margin-top: 72px; font-family: var(--mono); font-size: 24px;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--coral);
+  }
+  h1 { font-size: 92px; line-height: 1.02; letter-spacing: -3px; font-weight: 700; margin-top: 24px; }
+  h2 { font-size: 72px; line-height: 1.05; letter-spacing: -2px; font-weight: 700; margin-top: 20px; }
+  h1 em, h2 em { font-style: normal; color: var(--coral); }
+  .lede { margin-top: 36px; font-size: 36px; line-height: 1.35; color: var(--muted); }
+  .lede b { color: var(--ink); font-weight: 400; }
+
+  .foot {
+    margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+    font-size: 24px; color: var(--muted);
+  }
+  .foot b { color: var(--ink); }
+  .swipe { font-family: var(--mono); color: var(--coral); font-size: 26px; }
+
+  /* slide 2: problems */
+  .list { margin-top: 56px; display: flex; flex-direction: column; gap: 22px; }
+  .item {
+    display: flex; gap: 28px; align-items: flex-start;
+    background: rgba(22,23,28,0.85); border: 1px solid var(--line); border-radius: 20px;
+    padding: 28px 32px;
+  }
+  .x {
+    flex: none; width: 52px; height: 52px; border-radius: 14px;
+    display: grid; place-items: center; font-family: var(--mono); font-size: 28px; font-weight: 700;
+    background: var(--coral-dim); border: 1px solid var(--coral-edge); color: var(--coral);
+  }
+  .item h3 { font-size: 34px; letter-spacing: -0.5px; }
+  .item p { margin-top: 8px; font-size: 26px; color: var(--muted); line-height: 1.35; }
+
+  /* slide 3: flow */
+  .flow { margin-top: 64px; display: flex; flex-direction: column; gap: 18px; }
+  .lane-label {
+    font-family: var(--mono); font-size: 22px; letter-spacing: 3px; text-transform: uppercase;
+    padding-bottom: 10px; border-bottom: 2px solid; margin-top: 18px;
+  }
+  .day .lane-label { color: var(--coral); border-color: var(--coral); }
+  .night .lane-label { color: var(--night); border-color: var(--night); }
+  .step {
+    display: flex; align-items: center; gap: 24px; margin-top: 16px;
+    border-radius: 18px; border: 1px solid; padding: 22px 28px;
+  }
+  .day .step { background: var(--coral-dim); border-color: var(--coral-edge); }
+  .night .step { background: var(--night-dim); border-color: var(--night-edge); }
+  .step code { font-family: var(--mono); font-size: 32px; font-weight: 700; min-width: 190px; }
+  .step span { font-size: 26px; color: var(--muted); line-height: 1.3; }
+
+  /* slide 4: rules */
+  .rules { margin-top: 56px; display: flex; flex-direction: column; gap: 0; }
+  .rule { display: flex; gap: 32px; padding: 26px 0; border-top: 1px solid var(--line); }
+  .rule:last-child { border-bottom: 1px solid var(--line); }
+  .n { font-family: var(--mono); font-size: 30px; color: var(--coral); flex: none; width: 56px; padding-top: 4px; }
+  .rule h3 { font-size: 38px; letter-spacing: -0.8px; }
+  .rule p { margin-top: 8px; font-size: 26px; color: var(--muted); line-height: 1.35; }
+
+  /* slide 5: cta */
+  .cmd {
+    margin-top: 56px; font-family: var(--mono); font-size: 27px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 30px 32px;
+    line-height: 1.6;
+  }
+  .cmd .p { color: var(--coral); }
+  .cmd .c { color: var(--muted); }
+  .link {
+    margin-top: 40px; display: inline-block; align-self: flex-start;
+    font-family: var(--mono); font-size: 30px; color: var(--bg); background: var(--coral);
+    padding: 20px 30px; border-radius: 14px; font-weight: 700;
+  }
+  .credit { margin-top: 40px; font-size: 24px; color: var(--muted); line-height: 1.45; }
+</style>
+</head>
+<body>
+
+<!-- 1. Hook -->
+<section class="slide" id="s1">
+  <div class="top"><div class="brand">madmatt<span>skills</span></div><div class="count">1 / 5</div></div>
+  <div class="kicker">AI coding, done like engineering</div>
+  <h1>Your AI agent isn't the problem.<br><em>Your workflow is.</em></h1>
+  <p class="lede">I packaged the workflow that actually works for me into one open-source <b>Claude Code skill</b>. Install once, use it in every repo.</p>
+  <div class="foot"><div>by <b>@khakpour27</b></div><div class="swipe">swipe →</div></div>
+</section>
+
+<!-- 2. Problem -->
+<section class="slide" id="s2">
+  <div class="top"><div class="brand">madmatt<span>skills</span></div><div class="count">2 / 5</div></div>
+  <div class="kicker">The problem</div>
+  <h2>Why agents write <em>slop</em></h2>
+  <div class="list">
+    <div class="item"><div class="x">1</div><div><h3>They plan before they understand</h3><p>An eager plan built on assumptions nobody questioned.</p></div></div>
+    <div class="item"><div class="x">2</div><div><h3>They build in horizontal layers</h3><p>Phase 1: database. Phase 2: API. Phase 3: UI. No feedback until the end.</p></div></div>
+    <div class="item"><div class="x">3</div><div><h3>They write tests after the code</h3><p>Tests shaped to fit whatever the code already does.</p></div></div>
+    <div class="item"><div class="x">4</div><div><h3>They work in the dumb zone</h3><p>Past ~100k tokens, reasoning quality drops, whatever the window size.</p></div></div>
+  </div>
+  <div class="foot"><div></div><div class="swipe">the fix →</div></div>
+</section>
+
+<!-- 3. Workflow -->
+<section class="slide" id="s3">
+  <div class="top"><div class="brand">madmatt<span>skills</span></div><div class="count">3 / 5</div></div>
+  <div class="kicker">The workflow</div>
+  <h2>Day shift plans.<br><em>Night shift builds.</em></h2>
+  <div class="flow">
+    <div class="day">
+      <div class="lane-label">Day shift · you + agent</div>
+      <div class="step"><code>grill</code><span>Agent interviews you, one question at a time, with a recommendation</span></div>
+      <div class="step"><code>prd</code><span>Destination doc: stories, modules, tests, out of scope</span></div>
+      <div class="step"><code>issues</code><span>Thin vertical slices with blockers: a kanban DAG</span></div>
+    </div>
+    <div class="night">
+      <div class="lane-label">Night shift · agents, AFK</div>
+      <div class="step"><code>tdd loop</code><span>One issue per fresh session: red, green, refactor, commit</span></div>
+      <div class="step"><code>review</code><span>Fresh context, your standards pushed in. Then you QA.</span></div>
+    </div>
+  </div>
+  <div class="foot"><div></div><div class="swipe">the rules →</div></div>
+</section>
+
+<!-- 4. Rules -->
+<section class="slide" id="s4">
+  <div class="top"><div class="brand">madmatt<span>skills</span></div><div class="count">4 / 5</div></div>
+  <div class="kicker">5 rules it enforces</div>
+  <h2>Old books.<br><em>New agents.</em></h2>
+  <div class="rules">
+    <div class="rule"><div class="n">01</div><div><h3>Grill before you plan</h3><p>Shared understanding beats a pretty plan.</p></div></div>
+    <div class="rule"><div class="n">02</div><div><h3>Tracer bullets, not layers</h3><p>Every task cuts through DB, API and UI and ends in something clickable.</p></div></div>
+    <div class="rule"><div class="n">03</div><div><h3>Red before green</h3><p>No code until a failing test proves what "done" means.</p></div></div>
+    <div class="rule"><div class="n">04</div><div><h3>Clear, don't compact</h3><p>Small tasks, fresh sessions, stay in the smart zone.</p></div></div>
+    <div class="rule"><div class="n">05</div><div><h3>Deep modules</h3><p>You own the interfaces. Agents own the internals.</p></div></div>
+  </div>
+  <div class="foot"><div></div><div class="swipe">try it →</div></div>
+</section>
+
+<!-- 5. CTA -->
+<section class="slide" id="s5">
+  <div class="top"><div class="brand">madmatt<span>skills</span></div><div class="count">5 / 5</div></div>
+  <div class="kicker">Free and open source</div>
+  <h2>Install once.<br><em>Use it everywhere.</em></h2>
+  <div class="cmd">
+    <div><span class="p">&gt;</span> /plugin marketplace add khakpour27/madmattskills</div>
+    <div><span class="p">&gt;</span> /plugin install madmattskills@madmattskills</div>
+    <div class="c"># then just say: "grill me on <div class="c"># then: /madmattskills grill "your idea"</div>lt;your idea<div class="c"># then: /madmattskills grill "your idea"</div>gt;"</div>
+  </div>
+  <div class="link">github.com/khakpour27/madmattskills</div>
+  <p class="credit">Built on Brooks, Fowler, <i>The Pragmatic Programmer</i>, Ousterhout,<br>and Matt Pocock's <i>Workflow for AI Coding</i> workshop.</p>
+  <div class="foot"><div>by <b>@khakpour27</b> · MIT licensed</div><div class="swipe">⭐ star it</div></div>
+</section>
+
+<script>
+  var n = parseInt(location.hash.slice(1), 10);
+  if (n) {
+    document.body.classList.add('single');
+    var s = document.getElementById('s' + n);
+    if (s) s.classList.add('on');
+  }
+</script>
+</body>
+</html>
