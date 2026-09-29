@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- Source for banner.png. Re-render with:
+     headless_shell --screenshot=banner.png --window-size=1280,640 \
+              --force-device-scale-factor=2 --hide-scrollbars banner.html -->
+<style>
+  :root {
+    --bg: #0f1014;
+    --ink: #f4f1ec;
+    --muted: #9a978f;
+    --line: #2a2b31;
+    --coral: #e07a55;
+    --coral-dim: rgba(224, 122, 85, 0.14);
+    --night: #7c8cf8;
+    --night-dim: rgba(124, 140, 248, 0.14);
+    --sans: "Liberation Sans", "Helvetica Neue", Arial, sans-serif;
+    --mono: "DejaVu Sans Mono", "Liberation Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 640px; overflow: hidden; }
+  body {
+    background:
+      radial-gradient(700px 420px at 100% 0%, rgba(224,122,85,0.20), transparent 70%),
+      radial-gradient(600px 400px at 0% 100%, rgba(124,140,248,0.12), transparent 70%),
+      radial-gradient(circle, #23242a 1px, transparent 1.2px) 0 0 / 28px 28px,
+      var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    padding: 64px 72px;
+    display: flex;
+    flex-direction: column;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    align-self: flex-start;
+    font-family: var(--mono); font-size: 16px; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 16px; background: rgba(15,16,20,0.7);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 12px var(--coral); }
+  h1 {
+    margin-top: 28px;
+    font-size: 104px; font-weight: 700; letter-spacing: -4px; line-height: 1;
+  }
+  h1 span { color: var(--coral); }
+  .tagline { margin-top: 18px; font-size: 32px; color: var(--ink); letter-spacing: -0.5px; }
+  .tagline em { font-style: normal; color: var(--muted); }
+
+  .flow { margin-top: 52px; display: flex; align-items: flex-end; gap: 0; }
+  .group { display: flex; flex-direction: column; gap: 10px; }
+  .label {
+    font-family: var(--mono); font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    padding-bottom: 8px; border-bottom: 2px solid;
+  }
+  .day .label { color: var(--coral); border-color: var(--coral); }
+  .night .label { color: var(--night); border-color: var(--night); }
+  .steps { display: flex; align-items: center; }
+  .step {
+    font-family: var(--mono); font-size: 21px; font-weight: 700;
+    padding: 14px 20px; border-radius: 12px; border: 1px solid;
+    white-space: nowrap;
+  }
+  .day .step { background: var(--coral-dim); border-color: rgba(224,122,85,0.45); }
+  .night .step { background: var(--night-dim); border-color: rgba(124,140,248,0.45); }
+  .arrow { color: var(--muted); font-size: 22px; padding: 0 12px; font-family: var(--mono); }
+  .bridge { padding: 0 12px 14px; color: var(--muted); font-size: 22px; font-family: var(--mono); align-self: flex-end; }
+
+  .footer {
+    margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+  }
+  .cmd {
+    font-family: var(--mono); font-size: 18px; color: var(--ink);
+    background: #16171c; border: 1px solid var(--line); border-radius: 10px; padding: 12px 18px;
+  }
+  .cmd b { color: var(--coral); font-weight: 400; }
+  .by { font-size: 20px; color: var(--muted); }
+  .by strong { color: var(--ink); }
+</style>
+</head>
+<body>
+  <div class="eyebrow"><span class="dot"></span>Claude Code skill · open source · MIT</div>
+  <h1>madmatt<span>skills</span></h1>
+  <p class="tagline">Stop vibe coding. <em>Ship with agents like an engineer.</em></p>
+
+  <div class="flow">
+    <div class="group day">
+      <div class="label">Day shift · you + agent</div>
+      <div class="steps">
+        <div class="step">grill</div><div class="arrow">→</div>
+        <div class="step">prd</div><div class="arrow">→</div>
+        <div class="step">issues</div>
+      </div>
+    </div>
+    <div class="bridge">→</div>
+    <div class="group night">
+      <div class="label">Night shift · agents, AFK</div>
+      <div class="steps">
+        <div class="step">tdd loop</div><div class="arrow">→</div>
+        <div class="step">review</div>
+      </div>
+    </div>
+    <div class="bridge">→</div>
+    <div class="group day">
+      <div class="label">You</div>
+      <div class="steps"><div class="step">QA</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="cmd"><b>$</b> /plugin marketplace add khakpour27/madmattskills</div>
+    <div class="by">by <strong>@khakpour27</strong></div>
+  </div>
+</body>
+</html>

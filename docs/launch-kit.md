@@ -11,6 +11,10 @@ Set these under **About** (the gear icon on the repo page).
 
 **Website:** `https://github.com/khakpour27/madmattskills#readme`
 
+**Social preview image:** Settings → General → Social preview → upload
+`docs/assets/banner.png` (2560×1280, 2:1). It appears whenever the repo link
+is shared on LinkedIn, X, Slack or Discord.
+
 **Topics:** `claude-code` `claude-code-plugin` `ai-coding` `agents` `tdd`
 `software-engineering` `developer-tools` `prd` `workflow` `llm`
 

@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/assets/banner.png" alt="madmattskills: Stop vibe coding. Ship with agents like an engineer. Workflow: grill, prd, issues, TDD loop, review, QA." width="100%">
+
 # madmattskills
 
 **Stop vibe coding. Start shipping with agents like an engineer.**
@@ -163,6 +165,7 @@ skills/madmattskills/
   references/            per-mode playbooks, loaded only when needed
   templates/             PRD and issue templates
   scripts/               ralph-once.sh, ralph-afk.sh, ralph-prompt.md
+docs/                    banner image and launch kit
 install.sh               one-command personal install
 SECURITY.md              how to report vulnerabilities
 ```
