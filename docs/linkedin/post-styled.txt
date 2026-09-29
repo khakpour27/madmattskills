@@ -1,0 +1,31 @@
+𝗬𝗼𝘂𝗿 𝗔𝗜 𝗮𝗴𝗲𝗻𝘁 𝗶𝘀𝗻'𝘁 𝘁𝗵𝗲 𝗽𝗿𝗼𝗯𝗹𝗲𝗺. 𝗬𝗼𝘂𝗿 𝘄𝗼𝗿𝗸𝗳𝗹𝗼𝘄 𝗶𝘀.
+
+For months my AI coding sessions went the same way: a vague ask, an eager plan, "Phase 1: database, Phase 2: API, Phase 3: UI", tests written after the fact to match the code, and a context window that got dumb halfway through.
+
+The fix wasn't a bigger framework. It was the engineering fundamentals we already know, written down so the agent follows them every time.
+
+So I packaged that workflow into an open-source Claude Code skill: 𝗺𝗮𝗱𝗺𝗮𝘁𝘁𝘀𝗸𝗶𝗹𝗹𝘀.
+
+☀️ 𝗗𝗮𝘆 𝘀𝗵𝗶𝗳𝘁 (𝗺𝗲 + 𝘁𝗵𝗲 𝗮𝗴𝗲𝗻𝘁)
+→ 𝗚𝗿𝗶𝗹𝗹: the agent interviews me one question at a time, each with a recommended answer, until we share the same design
+→ 𝗣𝗥𝗗: user stories, which modules change, how it's tested, what's out of scope
+→ 𝗜𝘀𝘀𝘂𝗲𝘀: thin vertical slices that each end in something clickable, with dependencies mapped so they can run in parallel
+
+🌙 𝗡𝗶𝗴𝗵𝘁 𝘀𝗵𝗶𝗳𝘁 (𝗮𝗴𝗲𝗻𝘁𝘀, 𝗔𝗙𝗞)
+→ 𝗕𝘂𝗶𝗹𝗱: one issue per fresh session: failing test first, minimal code, refactor, commit
+→ 𝗥𝗲𝘃𝗶𝗲𝘄: a clean context with my coding standards pushed in
+
+Then I do the QA, and anything I find becomes a new issue.
+
+It draws on Brooks, Fowler, 𝘛𝘩𝘦 𝘗𝘳𝘢𝘨𝘮𝘢𝘵𝘪𝘤 𝘗𝘳𝘰𝘨𝘳𝘢𝘮𝘮𝘦𝘳, Ousterhout, and Matt Pocock's 𝘞𝘰𝘳𝘬𝘧𝘭𝘰𝘸 𝘧𝘰𝘳 𝘈𝘐 𝘊𝘰𝘥𝘪𝘯𝘨 workshop. 𝗢𝗹𝗱 𝗯𝗼𝗼𝗸𝘀, 𝗻𝗲𝘄 𝗮𝗴𝗲𝗻𝘁𝘀.
+
+𝗜𝗻𝘀𝘁𝗮𝗹𝗹 𝗼𝗻𝗰𝗲, 𝘂𝘀𝗲 𝗶𝘁 𝗶𝗻 𝗲𝘃𝗲𝗿𝘆 𝗿𝗲𝗽𝗼:
+/plugin marketplace add khakpour27/madmattskills
+
+👉 https://github.com/khakpour27/madmattskills
+
+It's plain markdown and bash, so fork it and make it yours. If it saves you from one more "Phase 1: database" plan, a ⭐ helps others find it.
+
+How do you keep AI agents on track in your codebase? Tell me in the comments 👇
+
+#AI #SoftwareEngineering #ClaudeCode #DeveloperTools #TDD #OpenSource
