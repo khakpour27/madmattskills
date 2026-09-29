@@ -1,10 +1,26 @@
 {
   "name": "madmattskills",
-  "description": "Grill -> PRD -> vertical-slice issues -> AFK TDD loop -> fresh-context review. Engineering fundamentals for AI coding.",
+  "description": "Stop vibe coding. A battle-tested AI coding workflow for Claude Code: grill the idea, write the PRD, slice it into tracer-bullet issues, let agents build them test-first while you're AFK, then review in a fresh context.",
   "version": "1.0.0",
   "author": {
-    "name": "khakpour27"
+    "name": "khakpour27",
+    "url": "https://github.com/khakpour27"
   },
   "repository": "https://github.com/khakpour27/madmattskills",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/khakpour27/madmattskills#readme",
+  "keywords": [
+    "ai-coding",
+    "workflow",
+    "tdd",
+    "prd",
+    "vertical-slices",
+    "tracer-bullets",
+    "ralph-loop",
+    "afk-agents",
+    "code-review",
+    "software-architecture",
+    "deep-modules",
+    "claude-code"
+  ]
 }
