@@ -142,6 +142,18 @@ you   /madmattskills review            # then QA it yourself; findings become ne
 11. Delete finished plans so they don't rot.
 12. Own your stack. It's markdown and bash, so edit it.
 
+## Security notes
+
+- The AFK loop feeds issue text to an agent that edits files unattended. Only
+  run it on issues you or trusted teammates wrote. Treat issues from strangers
+  as untrusted input.
+- Run it in a sandbox (container or throwaway worktree) with no production
+  secrets, and review the diff before merging.
+- Prefer `git clone` + `./install.sh` so you can read the installer before
+  running it.
+
+Found a security problem? See [SECURITY.md](SECURITY.md).
+
 ## What's inside
 
 ```
@@ -152,6 +164,7 @@ skills/madmattskills/
   templates/             PRD and issue templates
   scripts/               ralph-once.sh, ralph-afk.sh, ralph-prompt.md
 install.sh               one-command personal install
+SECURITY.md              how to report vulnerabilities
 ```
 
 ## Credits

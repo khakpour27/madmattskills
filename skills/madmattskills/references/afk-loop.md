@@ -34,6 +34,16 @@ Scripts in `scripts/` of this skill (copy them into the target repo, e.g.
   Run it inside a sandbox (Docker, devcontainer, or a git worktree on a
   throwaway branch) because it skips permission prompts for edits.
 
+## Safety
+
+- Issue text goes straight into an agent that edits files unattended. Only
+  loop over issues written by you or trusted teammates; an issue from a
+  stranger is a prompt-injection vector.
+- Run the AFK loop in a sandbox with no production credentials (no cloud keys,
+  no deploy tokens, no `.env` with real secrets) and only the network access it
+  needs.
+- Work on a throwaway branch or worktree and review the diff before merging.
+
 ## Parallel version
 
 For issues in the same DAG wave: one git worktree/branch per issue, one

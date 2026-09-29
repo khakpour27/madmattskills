@@ -25,7 +25,14 @@ if [ -z "$SRC_ROOT" ] || [ ! -f "$SRC_ROOT/skills/madmattskills/SKILL.md" ]; the
 fi
 
 mkdir -p "$SKILLS_DIR"
-rm -rf "$TARGET"
+if [ -L "$TARGET" ]; then
+  rm "$TARGET"
+elif [ -e "$TARGET" ]; then
+  # Never silently delete a real directory: it may hold local edits.
+  BACKUP="$TARGET.bak.$(date +%Y%m%d%H%M%S)"
+  mv "$TARGET" "$BACKUP"
+  echo "Existing $TARGET moved to $BACKUP"
+fi
 if [ "$MODE" = "copy" ]; then
   cp -R "$SRC_ROOT/skills/madmattskills" "$TARGET"
 else
