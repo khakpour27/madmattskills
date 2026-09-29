@@ -1,0 +1,17 @@
+{
+  "name": "madmattskills",
+  "owner": {
+    "name": "khakpour27"
+  },
+  "metadata": {
+    "description": "Personal skills for AI-assisted software engineering."
+  },
+  "plugins": [
+    {
+      "name": "madmattskills",
+      "source": "./",
+      "description": "Grill -> PRD -> vertical-slice issues -> AFK TDD loop -> fresh-context review. Engineering fundamentals for AI coding.",
+      "version": "1.0.0"
+    }
+  ]
+}

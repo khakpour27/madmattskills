@@ -1,0 +1,10 @@
+{
+  "name": "madmattskills",
+  "description": "Grill -> PRD -> vertical-slice issues -> AFK TDD loop -> fresh-context review. Engineering fundamentals for AI coding.",
+  "version": "1.0.0",
+  "author": {
+    "name": "khakpour27"
+  },
+  "repository": "https://github.com/khakpour27/madmattskills",
+  "license": "MIT"
+}
